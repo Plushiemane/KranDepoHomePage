@@ -1,0 +1,58 @@
+.navbar-toggler {
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 50%;
+  transition: transform 0.35s;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar-toggler span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 1.375rem;
+  height: 2px;
+  background-color: currentcolor;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.18s;
+}
+.navbar-toggler span::before, .navbar-toggler span::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  display: block;
+  width: 1.375rem;
+  height: 2px;
+  background-color: currentcolor;
+  transition: transform 0.35s;
+  transform-origin: 50% 50%;
+}
+.navbar-toggler span::before {
+  transform: translateY(-6px);
+}
+.navbar-toggler span::after {
+  transform: translateY(6px);
+}
+.navbar-toggler:hover span::before {
+  transform: translateY(-8px);
+}
+.navbar-toggler:hover span::after {
+  transform: translateY(8px);
+}
+.navbar-toggler[aria-expanded=true] {
+  transform: rotate(90deg);
+}
+.navbar-toggler[aria-expanded=true] span {
+  background-color: transparent;
+}
+.navbar-toggler[aria-expanded=true] span::before {
+  transform: translateY(0) rotate(45deg);
+}
+.navbar-toggler[aria-expanded=true] span::after {
+  transform: translateY(0) rotate(-45deg);
+}
