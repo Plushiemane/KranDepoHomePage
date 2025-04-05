@@ -10,7 +10,7 @@ interface MenuCategoryProps {
 
 const MenuCategory: React.FC<MenuCategoryProps> = ({ href, imageSrc, altText }) => {
   return (
-    <Link to={href} className="w-1/2 p-2 flex justify-center">
+    <Link to={href} className="w-1/2 p-1 sm:p-1 flex justify-center">
       <img 
         data-bss-disabled-mobile="true" 
         data-bss-hover-animate="pulse" 
@@ -26,7 +26,7 @@ const MenuPage: React.FC = () => {
   return (
     <Layout title="Menu">
       {/* Main container - removed height constraints */}
-      <section className="w-[95%] min-h-fit opacity-100 my-[2.5%] mx-[2.5%] rounded-[63px] 
+      <section className="w-[100%] min-h-fit opacity-100 my-[2.5%] mx-[0.0%] rounded-[63px] 
                           border-[10px] border-[#995e43] border-t-[10px] border-t-[#995f45] 
                           bg-[#dca471] bg-[url('/assets/img/Freebie-VintagePaperTextures-Preview-05.webp')]">
         <div className="mx-auto my-[2%]">
@@ -48,7 +48,7 @@ const MenuPage: React.FC = () => {
             {/* First row of menu categories */}
             <div className="text-center mx-auto mr-[1.25%] ml-[1.25%] mb-[2%] w-[97.5%]">
               <div className="w-[80%] mx-auto rounded-[25px] border-[9px] border-[rgb(153,95,69)] border-style-groove
-                              p-4 bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
+                              p-2 bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
                 <div className="flex flex-wrap justify-center">
                   <MenuCategory 
                     href="/potrawy/daniaglowne" 
@@ -67,7 +67,7 @@ const MenuPage: React.FC = () => {
             {/* Second row of menu categories */}
             <div className="text-center mx-auto mr-[1.25%] ml-[1.25%] mb-[2%] w-[97.5%]">
               <div className="w-[80%] mx-auto rounded-[25px] border-[9px] border-[rgb(153,95,69)] border-style-groove
-                              p-4 bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
+                              p-2 bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
                 <div className="flex flex-wrap justify-center">
                   <MenuCategory 
                     href="/potrawy/zupy" 
@@ -86,7 +86,7 @@ const MenuPage: React.FC = () => {
             {/* Additional menu categories */}
             <div className="w-[97.5%] mx-[1.25%]">
               <div className="w-[80%] mx-auto rounded-[25px] border-[9px] border-[rgb(153,95,69)] border-style-groove
-                             p-4 mb-[2%] text-center bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
+                             p-2 mb-[2%] text-center bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
                 <div className="flex flex-wrap justify-center">
                   <MenuCategory 
                     href="/potrawy/dladzieci" 
@@ -105,7 +105,7 @@ const MenuPage: React.FC = () => {
             {/* More menu categories */}
             <div className="text-center mx-auto mr-[1.25%] ml-[1.25%] mb-[2%] w-[97.5%]">
               <div className="w-[80%] mx-auto rounded-[25px] border-[9px] border-[rgb(153,95,69)] border-style-groove
-                             p-4 bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
+                             p-2 bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
                 <div className="flex flex-wrap justify-center">
                   <MenuCategory 
                     href="/potrawy/dodatki" 
@@ -124,7 +124,7 @@ const MenuPage: React.FC = () => {
             {/* Final row with napoje */}
             <div className="text-center mx-auto mr-[1.25%] ml-[1.25%] mb-[5%] w-[97.5%]">
               <div className="w-[80%] mx-auto rounded-[25px] border-[9px] border-[rgb(153,95,69)] border-style-groove
-                             p-4 bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
+                             p-2 bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-1.webp')]">
                 <div className="flex flex-wrap justify-center">
                   <MenuCategory 
                     href="/potrawy/napojecieple" 
@@ -143,7 +143,7 @@ const MenuPage: React.FC = () => {
             {/* Allergen information */}
             <div className="text-center mx-auto mr-[1.25%] ml-[1.25%] mb-[5%] w-[97.5%]">
               <div className="col">
-                <h1 className="text-sm  mb-[1%] mt-[5%]">
+                <h1 className="text-sm  mb-[1%] mt-[5%]" style={{ fontFamily: 'Alkatra', color: 'var(--bs-emphasis-color)', fontSize: '12px' }}>
                   O alergeny występujące w naszych daniach, prosimy pytać załogę.
                 </h1>
               </div>
