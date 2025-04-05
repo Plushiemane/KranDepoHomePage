@@ -1,5 +1,12 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { fetchMenuItems, MenuItem } from '../services/api';
+
+interface MenuItem {
+  id: number;
+  nazwa: string;
+  cena: number;
+  opis?: string;
+  kategoria?: string;
+}
 
 interface MenuContextType {
   menuItems: MenuItem[];
@@ -7,15 +14,13 @@ interface MenuContextType {
   error: string | null;
 }
 
-const MenuContext = createContext<MenuContextType | undefined>(undefined);
+const MenuContext = createContext<MenuContextType>({
+  menuItems: [],
+  loading: false,
+  error: null
+});
 
-export const useMenu = () => {
-  const context = useContext(MenuContext);
-  if (context === undefined) {
-    throw new Error('useMenu must be used within a MenuProvider');
-  }
-  return context;
-};
+export const useMenu = () => useContext(MenuContext);
 
 interface MenuProviderProps {
   children: ReactNode;
@@ -23,23 +28,30 @@ interface MenuProviderProps {
 
 export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadMenuItems = async () => {
+    const fetchMenuItems = async () => {
       try {
-        const items = await fetchMenuItems();
-        setMenuItems(items);
+        setLoading(true);
+        const response = await fetch('https://panel.krannadziei.pl/api/cennik');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setMenuItems(data);
       } catch (err) {
-        setError('Failed to fetch menu items');
-        console.error(err);
+        setError(err instanceof Error ? err.message : 'An unknown error occurred');
+        console.error('Error fetching menu items:', err);
       } finally {
         setLoading(false);
       }
     };
 
-    loadMenuItems();
+    fetchMenuItems();
   }, []);
 
   return (

@@ -2,115 +2,65 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import MenuItem from '../../components/MenuItem';
+import { useMenu } from '../../context/MenuContext';
 
 const NapojePage: React.FC = () => {
+  const { menuItems, loading, error } = useMenu();
+
+  // Filter items that are cold beverages
+  const napoje = menuItems.filter(item => 
+    (item.nazwa.toLowerCase().includes('napój') || 
+    item.nazwa.toLowerCase().includes('woda') ||
+    item.nazwa.toLowerCase().includes('sok') ||
+    item.nazwa.toLowerCase().includes('cola') ||
+    item.nazwa.toLowerCase().includes('fanta') ||
+    item.nazwa.toLowerCase().includes('sprite') ||
+    item.nazwa.toLowerCase().includes('fuze') ||
+    item.nazwa.toLowerCase().includes('tiger')) && 
+    !item.nazwa.toLowerCase().includes('ciepł') && 
+    !item.nazwa.toLowerCase().includes('kawa') && 
+    !item.nazwa.toLowerCase().includes('herbata')
+  );
+
   return (
     <Layout title="Napoje">
-      <section style={{
-        width: '80%',
-        height: '40%',
-        opacity: 1,
-        marginBottom: '2.5%',
-        marginRight: '10%',
-        marginLeft: '10%',
-        background: "url('https://indieground.net/wp-content/uploads/2022/07/Freebie-VintagePaperTextures-Preview-05.jpg') round, #dca471",
-        borderRadius: '63px',
-        border: '10px solid #995e43',
-        borderTop: '10px solid #995f45'
-      }}>
-        <div style={{ margin: 'auto', marginTop: '2%', marginBottom: '2%' }}>
-          <img style={{ width: '30%', height: '15%', marginRight: '35%', marginLeft: '35%' }} 
-               src="/assets/img/sigma.webp" width="358" height="239" alt="Logo Kran Nadziei" />
-          <div style={{
-            margin: 'auto',
-            marginTop: '2%',
-            marginBottom: '2%',
-            marginRight: 'auto',
-            marginLeft: 'auto',
-            background: '#d08d4e',
-            textAlign: 'center',
-            borderRadius: '108px',
-            borderTopWidth: '9px',
-            borderTopColor: 'var(--bs-emphasis-color)',
-            width: '80%',
-            height: '10%'
-          }}>
+      <section className="w-[80%] min-h-fit mx-auto mb-8 py-6 px-4
+                         bg-[#dca471] bg-[url('/assets/img/paper-texture.jpg')] bg-cover
+                         rounded-[63px] border-[10px] border-[#995e43] border-t-[10px] border-t-[#995f45]">
+        <div className="mx-auto my-[2%] text-center">
+          <img className="w-[30%] max-w-[250px] mx-auto" 
+               src="/assets/img/sigma.webp" alt="Logo 'Kranu Nadziei'" />
+          <div className="mx-auto my-[2%] bg-[#d08d4e] text-center rounded-[108px] 
+                          border-t-[9px] border-t-[var(--bs-emphasis-color)] w-[80%] py-2">
             <Link to="/menu">
-              <h3 className="fs-1 text-center" data-bss-hover-animate="pulse" style={{
-                fontFamily: "'Alegreya Sans SC', sans-serif",
-                fontSize: '63px',
-                margin: 'auto',
-                width: '60%',
-                height: '10%'
-              }}><strong><span style={{ color: 'rgb(0, 0, 0)' }}>Menu</span></strong></h3>
+              <h3 className="text-center font-['Alegreya_Sans_SC'] text-[63px]" data-bss-hover-animate="pulse">
+                <strong><span className="text-black">Menu</span></strong>
+              </h3>
             </Link>
           </div>
         </div>
         
-        <h1 style={{
-          textAlign: 'center',
-          fontFamily: 'Alkatra, serif',
-          borderBottom: '10px solid rgb(208,143,82)',
-          color: 'var(--bs-emphasis-color)'
-        }}>Napoje</h1>
+        <h1 className="text-center font-['Alkatra'] border-b-[10px] border-[rgb(208,143,82)] text-[var(--bs-emphasis-color)]">
+          Napoje
+        </h1>
         
-        <div className="container" style={{ margin: 'auto', marginLeft: 'auto', color: 'var(--bs-emphasis-color)' }}>
-          <MenuItem 
-            name="Coca Cola" 
-            defaultPrice="6.00zł" 
-            description="0.25 l" 
-            image="/assets/img/photo-1599475143531-695b4f4b5fa8.jpg" 
-          />
-          
-          <MenuItem 
-            name="Fanta" 
-            defaultPrice="6.00zł" 
-            description="0.25 l" 
-            image="/assets/img/Fanta-Pomaranczowa-250ml.webp" 
-          />
-          
-          <MenuItem 
-            name="Sprite" 
-            defaultPrice="6.00zł" 
-            description="0.25 l" 
-            image="/assets/img/Sprite-250ml.jpg" 
-          />
-          
-          <MenuItem 
-            name="Woda gazowana" 
-            defaultPrice="5.00zł" 
-            description="0.5 l" 
-          />
-          
-          <MenuItem 
-            name="Woda niegazowana" 
-            defaultPrice="5.00zł" 
-            description="0.5 l" 
-          />
-          
-          <MenuItem 
-            name="Soki Cappy" 
-            defaultPrice="8.00zł" 
-            description="0.25 l" 
-          />
-          
-          <MenuItem 
-            name="Oshee" 
-            defaultPrice="9.00zł" 
-            description="0.75 l" 
-          />
-          
-          <MenuItem 
-            name="Fuze Tea" 
-            defaultPrice="8.00zł" 
-            description="0.5 l" 
-          />
-          
-          <MenuItem 
-            name="Tiger" 
-            defaultPrice="9.00zł" 
-            description="0.25 l" 
-          />
+        <div className="container mx-auto text-[var(--bs-emphasis-color)]">
+          {loading ? (
+            <p className="text-center p-8 text-white font-bold text-xl">Ładowanie menu...</p>
+          ) : error ? (
+            <p className="text-center p-8 text-red-500 font-bold">Błąd ładowania menu: {error}</p>
+          ) : napoje.length > 0 ? (
+            napoje.map(item => (
+              <MenuItem 
+                key={item.id}
+                name={item.nazwa}
+                description={item.opis}
+                dataItemName={item.nazwa}
+              />
+            ))
+          ) : (
+            <p className="text-center p-8 text-white font-bold">Obecnie brak napojów w menu.</p>
+          )}
         </div>
       </section>
     </Layout>

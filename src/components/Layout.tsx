@@ -1,36 +1,23 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import Header from './Header';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
 interface LayoutProps {
-  children: ReactNode;
   title?: string;
+  children: ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, title = "Kran Nadziei" }) => {
-  useEffect(() => {
-    // Refresh AOS animations when component mounts
-    if ((window as any).AOS) {
-      setTimeout(() => {
-        (window as any).AOS.refresh();
-      }, 150);
-    }
-    
-    document.title = `${title} - Restauracja w Policach`;
-    
-    return () => {
-      // Cleanup (if needed)
-    };
-  }, [title]);
-
+const Layout: React.FC<LayoutProps> = ({ title, children }) => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen overflow-x-hidden max-w-full">
       <Header title={title} />
       <Navbar />
-      <main>{children}</main>
+      <main className="flex-grow overflow-x-hidden w-full">
+        {children}
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
