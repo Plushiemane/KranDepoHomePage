@@ -25,21 +25,21 @@ const HomePage: React.FC = () => {
       </div>
       
       <div data-aos="fade-up" data-aos-duration="600" data-aos-once="true" 
-           className="menuutil classforfonts w-[75%] h-[40%] opacity-100 mb-[2%] mx-[12.5%] 
+           className="menuutil  w-[75%] h-[40%] opacity-100 mb-[2%] mx-[12.5%] 
                       bg-[var(--bs-secondary-color)] bg-[url('/assets/img/g081fcc5524a8dbf6e56604304ae091b9767f7222e88619608dddee1b5fe4b0241f684f87aec77d3103ce0effb98c4fa63bf325e7bef3b67c4ecc48e8e7b5e23c_640.webp')] 
                       rounded-[25px] mt-[5%] border-[10px] border-[#995e43] border-t-[10px] border-t-[#995f45] p-[2%] my-4 font-['Alkatra']">
-        <h3 className="text-break text-center text-medium mx-auto my-[2%] px-[5%] font-['Alkatra'] font-bold rounded-0">
-          <span className="text-white bg-transparent text-medium mx-auto my-[2%] px-[5%] font-['roboto'] font-bold rounded-0">
+        <h3 className="text-break text-center text-xl mx-auto my-[2%] px-[5%] font-['Alkatra'] font-bold rounded-0">
+          <span className="text-white bg-transparent text-base mx-auto my-[2%] px-[5%] font-['Alkatra'] font-bold rounded-0">
             Kran Nadziei, nowy lokal w Policach.
           </span><br/>
-          <span className="text-white bg-transparent  ">
+          <span className="text-white text-base bg-transparent  ">
             Oferujemy dania z wołowiny i schabu, a także sałatki i małe przekąski.
           </span><br/>
-          <span className="text-white bg-transparent">
+          <span className="text-white bg-transparent text-base">
             W ofercie mamy też napoje niskoalkoholowe jak piwo i wino, które idą idealnie w parze ze stekiem czy schabem na kości.&nbsp;
           </span><br/><br/>
           <strong>
-            <span className="text-white bg-black/75">
+            <span className="text-white text-base bg-black/75">
               Organizujemy również imprezy okolicznościowe o klasycznym klimacie.
             </span>
           </strong>

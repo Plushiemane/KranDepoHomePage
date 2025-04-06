@@ -27,6 +27,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   price,
   imageUrl 
 }) => {
+  imageUrl = imageUrl ? `https://panel.krannadziei.pl${imageUrl.startsWith('/') ? imageUrl : '/' + imageUrl}` : '';
   // Try to get price from props, then from fallback map, then default to "Cena niedostępna"
   const effectivePrice = price !== undefined ? price : 
     (name in fallbackPrices ? fallbackPrices[name] : undefined);
@@ -64,7 +65,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
       <div className="col-md-6 flex justify-center items-center content-center self-center justify-xxl-center rounded-[25px] bg-[url('/assets/img/ga2368c7bacbea5c862b5a0dcf5b6c1c5e3be67c5e43d0c1273f072fef8dacc9918875c11cfdcf5817c5f0aa9bb27d834e92ce6a76154e4f587b1b155b15c10fe_640-2.webp')]">
         {hasImage && (
           <>
-            {console.log(`Trying to load image from: ${imageUrl}`)}
+            {console.log(`Trying to load image from: ${imageUrl}`)
+            }
             <img
               src={imageUrl}
               className="rounded-[25px] my-[10%] mx-[40%] border-4 border-solid w-[80%] h-auto"

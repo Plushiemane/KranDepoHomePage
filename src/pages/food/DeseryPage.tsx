@@ -44,7 +44,8 @@ const DeseryPage: React.FC = () => {
                 name={item.nazwa}
                 description={item.opis}
                 dataItemName={item.nazwa}
-                price={item.cena} // Add the price prop here!
+                price={item.cena}
+                imageUrl={item.linkdofoto}
               />
             ))
           ) : (

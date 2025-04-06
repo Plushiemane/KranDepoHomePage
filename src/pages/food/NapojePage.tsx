@@ -64,6 +64,7 @@ const NapojePage: React.FC = () => {
                   description={item.opis}
                   dataItemName={item.nazwa}
                   price={item.cena} // Ensure price is passed
+                  imageUrl={item.linkdofoto}
                 />
               );
             })
