@@ -1,23 +1,39 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
+export enum MenuCategory {
+  DaniaGlowne = 1,
+  Salatki = 2,
+  Zupy = 3,
+  Przekaski = 4,
+  DlaDzieci = 5,
+  Desery = 6,
+  Dodatki = 7,
+  Alkohole = 8,
+  NapojeCieple = 9,
+  Napoje = 10
+}
+
 interface MenuItem {
+  linkdofoto: string | undefined;
   id: number;
   nazwa: string;
   cena: number;
   opis?: string;
-  kategoria?: string;
+  kategoria: number;
 }
 
 interface MenuContextType {
   menuItems: MenuItem[];
   loading: boolean;
   error: string | null;
+  getCategoryItems: (categoryId: number) => MenuItem[];
 }
 
 const MenuContext = createContext<MenuContextType>({
   menuItems: [],
   loading: false,
-  error: null
+  error: null,
+  getCategoryItems: () => []
 });
 
 export const useMenu = () => useContext(MenuContext);
@@ -42,7 +58,21 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
         }
         
         const data = await response.json();
-        setMenuItems(data);
+        
+        // Validate and log the data structure for debugging
+        console.log("API Response:", data);
+        
+        // Ensure all items have the required properties
+        const validData = Array.isArray(data) ? data.filter(item => 
+          item && 
+          typeof item === 'object' && 
+          'nazwa' in item && 
+          'cena' in item && 
+          typeof item.cena === 'number'
+        ) : [];
+        
+        console.log("Filtered valid data:", validData);
+        setMenuItems(validData);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An unknown error occurred');
         console.error('Error fetching menu items:', err);
@@ -54,8 +84,13 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
     fetchMenuItems();
   }, []);
 
+  // Helper function to get items by category
+  const getCategoryItems = (categoryId: number) => {
+    return menuItems.filter(item => item.kategoria === categoryId);
+  };
+
   return (
-    <MenuContext.Provider value={{ menuItems, loading, error }}>
+    <MenuContext.Provider value={{ menuItems, loading, error, getCategoryItems }}>
       {children}
     </MenuContext.Provider>
   );

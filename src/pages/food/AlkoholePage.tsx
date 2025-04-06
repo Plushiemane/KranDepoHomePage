@@ -2,24 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import MenuItem from '../../components/MenuItem';
-import { useMenu } from '../../context/MenuContext';
+import { useMenu, MenuCategory } from '../../context/MenuContext';
 
 const AlkoholePage: React.FC = () => {
-  const { menuItems, loading, error } = useMenu();
-
-  // Filter items that are alcoholic beverages
-  const alkohole = menuItems.filter(item => 
-    item.nazwa.toLowerCase().includes('piwo') || 
-    item.nazwa.toLowerCase().includes('wino') ||
-    item.nazwa.toLowerCase().includes('wódka') ||
-    item.nazwa.toLowerCase().includes('whisky') ||
-    item.nazwa.toLowerCase().includes('drink')
-  );
+  const { loading, error, getCategoryItems } = useMenu();
+  
+  // Get items from category 8 (Alkohole)
+  const alkohole = getCategoryItems(MenuCategory.Alkohole);
 
   return (
     <Layout title="Alkohole">
       <section className="w-[80%] min-h-fit mx-auto mb-8 py-6 px-4
-                         bg-[#dca471] bg-[url('/assets/img/paper-texture.jpg')] bg-cover
+                         bg-[#dca471] bg-[url('/assets/img/Freebie-VintagePaperTextures-Preview-05.webp')] 
                          rounded-[63px] border-[10px] border-[#995e43] border-t-[10px] border-t-[#995f45]">
         <div className="mx-auto my-[2%] text-center">
           <img className="w-[30%] max-w-[250px] mx-auto" 
@@ -44,12 +38,14 @@ const AlkoholePage: React.FC = () => {
           ) : error ? (
             <p className="text-center p-8 text-red-500 font-bold">Błąd ładowania menu: {error}</p>
           ) : alkohole.length > 0 ? (
-            alkohole.map(item => (
+            alkohole.map((item, index) => (
               <MenuItem 
-                key={item.id}
+                key={item.id || index}
                 name={item.nazwa}
                 description={item.opis}
                 dataItemName={item.nazwa}
+                price={item.cena}
+                imageUrl={item.linkdofoto}
               />
             ))
           ) : (

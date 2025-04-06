@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="sticky top-0 w-full bg-[#222222] rounded-2xl py-2 mb-6 mt-6 z-50 overflow-hidden mx-auto max-w-[95%]">
+    <nav className="fixed top-0 left-0 w-svw bg-[#222222] py-2 mb-6 mt-0 z-100 overflow-hidden mx-0 max-w-[100%] ">
       <div className="container mx-auto px-4">
         {/* Desktop Navigation */}
         <div className="hidden md:flex justify-center items-center">
@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Hamburger and Brand */}
-        <div className="md:hidden flex justify-between items-center">
+        <div className="md:hidden flex justify-between items-center ml-0">
           <Link to="/" className="text-white font-bold text-xl">Kran Nadziei</Link>
           <button 
             onClick={toggleMenu}

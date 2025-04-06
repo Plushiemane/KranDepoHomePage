@@ -2,15 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import MenuItem from '../../components/MenuItem';
-import { useMenu } from '../../context/MenuContext';
+import { useMenu, MenuCategory } from '../../context/MenuContext';
 
 const PrzekaskiPage: React.FC = () => {
-  const { menuItems, loading, error } = useMenu();
+  const { loading, error, getCategoryItems } = useMenu();
+  
+  // Get items from category 4 (Przekaski)
+  const przekaski = getCategoryItems(MenuCategory.Przekaski);
 
   return (
     <Layout title="Przekąski">
       <section className="w-[80%] min-h-fit mx-auto mb-8 py-6 px-4
-                         bg-[#dca471] bg-[url('/assets/img/paper-texture.jpg')] bg-cover
+                         bg-[#dca471] bg-[url('/assets/img/Freebie-VintagePaperTextures-Preview-05.webp')] 
                          rounded-[63px] border-[10px] border-[#995e43] border-t-[10px] border-t-[#995f45]">
         <div className="mx-auto my-[2%] text-center">
           <img className="w-[30%] max-w-[250px] mx-auto" 
@@ -34,17 +37,19 @@ const PrzekaskiPage: React.FC = () => {
             <p className="text-center p-8 text-white font-bold text-xl">Ładowanie menu...</p>
           ) : error ? (
             <p className="text-center p-8 text-red-500 font-bold">Błąd ładowania menu: {error}</p>
-          ) : menuItems.length > 0 ? (
-            menuItems.map(item => (
+          ) : przekaski.length > 0 ? (
+            przekaski.map((item, index) => (
               <MenuItem 
-                key={item.id}
+                key={item.id || index}
                 name={item.nazwa}
                 description={item.opis}
                 dataItemName={item.nazwa}
+                price={item.cena}
+                imageUrl={item.linkdofoto}
               />
             ))
           ) : (
-            <p className="text-center p-8 text-white font-bold">Menu jest puste.</p>
+            <p className="text-center p-8 text-white font-bold">Obecnie brak przekąsek w menu.</p>
           )}
         </div>
       </section>

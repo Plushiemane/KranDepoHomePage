@@ -2,27 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import MenuItem from '../../components/MenuItem';
-import { useMenu } from '../../context/MenuContext';
+import { useMenu, MenuCategory } from '../../context/MenuContext';
 
 const DaniaGlownePage: React.FC = () => {
-  const { menuItems, loading, error } = useMenu();
-
-  // Filter items that are main dishes
-  const daniaGlowne = menuItems.filter(item => 
-    !item.nazwa.toLowerCase().includes('sałatka') && 
-    !item.nazwa.toLowerCase().includes('zupa') &&
-    !item.nazwa.toLowerCase().includes('napój') &&
-    !item.nazwa.toLowerCase().includes('deser') &&
-    !item.nazwa.toLowerCase().includes('dodatk') &&
-    !item.nazwa.toLowerCase().includes('przekąsk') &&
-    item.nazwa.toLowerCase() !== 'piwo' &&
-    item.nazwa.toLowerCase() !== 'wino' 
-  );
+  const { loading, error, getCategoryItems } = useMenu();
+  
+  // Get items from category 1 (DaniaGlowne)
+  const daniaGlowne = getCategoryItems(MenuCategory.DaniaGlowne);
 
   return (
     <Layout title="Dania Główne">
       <section className="w-[80%] min-h-fit mx-auto mb-8 py-6 px-4
-                         bg-[#dca471] bg-[url('/assets/img/paper-texture.jpg')] bg-cover
+                         bg-[#dca471] bg-[url('/assets/img/Freebie-VintagePaperTextures-Preview-05.webp')] 
                          rounded-[63px] border-[10px] border-[#995e43] border-t-[10px] border-t-[#995f45]">
         <div className="mx-auto my-[2%] text-center">
           <img className="w-[30%] max-w-[250px] mx-auto" 
@@ -47,12 +38,14 @@ const DaniaGlownePage: React.FC = () => {
           ) : error ? (
             <p className="text-center p-8 text-red-500 font-bold">Błąd ładowania menu: {error}</p>
           ) : daniaGlowne.length > 0 ? (
-            daniaGlowne.map(item => (
+            daniaGlowne.map((item, index) => (
               <MenuItem 
-                key={item.id}
+                key={item.id || index}
                 name={item.nazwa}
                 description={item.opis}
                 dataItemName={item.nazwa}
+                price={item.cena}
+                imageUrl={item.linkdofoto}
               />
             ))
           ) : (
