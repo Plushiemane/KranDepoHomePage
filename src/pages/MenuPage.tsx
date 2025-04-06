@@ -36,7 +36,7 @@ const MenuPage: React.FC = () => {
             alt="Logo Kran Nadziei"
           />
           <div className="mx-auto my-[2%] bg-[#d08d4e] text-center rounded-[108px] 
-                          border-t-[9px] border-t-[var(--bs-emphasis-color)] w-[80%] py-2">
+                           border-t-[var(--bs-emphasis-color)] w-[80%] py-2">
             <h3 className="text-center font-['Alegreya_Sans_SC'] text-[63px] mx-auto">
               <strong><span className="text-black">Menu</span></strong>
             </h3>

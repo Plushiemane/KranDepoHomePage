@@ -19,7 +19,7 @@ const PrzekaskiPage: React.FC = () => {
           <img className="w-[30%] max-w-[250px] mx-auto" 
                src="/assets/img/sigma.webp" alt="Logo 'Kranu Nadziei'" />
           <div className="mx-auto my-[2%] bg-[#d08d4e] text-center rounded-[108px] 
-                          border-t-[9px] border-t-[var(--bs-emphasis-color)] w-[80%] py-2">
+                           border-t-[var(--bs-emphasis-color)] w-[80%] py-2">
             <Link to="/menu">
               <h3 className="text-center font-['Alegreya_Sans_SC'] text-[63px]" data-bss-hover-animate="pulse">
                 <strong><span className="text-black">Menu</span></strong>
