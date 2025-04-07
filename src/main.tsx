@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import './index.css';
+
 import MenuProvider from './context/MenuContext';
 
 // Import Bootstrap CSS and JS
@@ -16,7 +16,7 @@ import './assets/css/iframe.css';
 import './assets/css/loader/styles.css';
 import './assets/css/SBE-Hamburger-Animated.compiled.css';
 import './assets/css/animate.min.css';
-
+import './index.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -28,14 +28,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 );
 
 // Initialize animations on page load
-window.addEventListener('load', () => {
-  // Hide loader when page is loaded
+window.addEventListener('DOMContentLoaded', () => {
   const loader = document.querySelector('.loader');
   if (loader) {
-    loader.classList.add('loader--hidden');
+    loader.classList.add('loader-hidden');
   }
-  
-  // Initialize AOS animations if available
   if ((window as any).AOS) {
     (window as any).AOS.init();
   }

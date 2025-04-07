@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const loader = document.querySelector('.loader');
     // Only try to modify classList if loader exists
     if (loader) {
-      loader.classList.add('loader--hidden');
+      loader.classList.add('loader-hidden');
     }
   });
 });

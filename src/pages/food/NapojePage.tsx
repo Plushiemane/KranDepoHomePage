@@ -39,7 +39,7 @@ const NapojePage: React.FC = () => {
                            border-t-[var(--bs-emphasis-color)] w-[80%] py-2">
             <Link to="/menu">
               <h3 className="text-center font-['Alegreya_Sans_SC'] text-[63px]" data-bss-hover-animate="pulse">
-                <strong><span className="text-black">Menu</span></strong>
+                <strong><span className="">Menu</span></strong>
               </h3>
             </Link>
           </div>
@@ -48,7 +48,7 @@ const NapojePage: React.FC = () => {
         <h1 className="text-center font-['Alkatra'] border-b-[10px] border-[rgb(208,143,82)] text-[var(--bs-emphasis-color)]">
           Napoje
         </h1>
-        
+        <h2 className = "text-center font-['Alkatra'] border-b-[10px] border-[rgb(208,143,82)] text-[var(--bs-emphasis-color)]"> Zdjęcia pokazują propozycję podania</h2>
         <div className="container mx-auto text-[var(--bs-emphasis-color)]">
           {loading ? (
             <p className="text-center p-8 text-white font-bold text-xl">Ładowanie menu...</p>

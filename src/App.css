@@ -5,6 +5,7 @@
   margin: 0 auto;
   margin-left: 0;
   padding: 2rem;
+  text-decoration: none;
   text-align: center;
 }
 
@@ -16,6 +17,14 @@
   color: #fff;
   text-align: center;
   margin: 0 auto;
+}
+a {
+  text-decoration: none !important;
+}
+
+/* If you want underlines only on hover */
+a:hover {
+  text-decoration: none !important;
 }
 
 .classforfonts {
