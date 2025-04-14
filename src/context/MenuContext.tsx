@@ -60,7 +60,6 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
         const data = await response.json();
         
         // Validate and log the data structure for debugging
-        console.log("API Response:", data);
         
         // Ensure all items have the required properties
         const validData = Array.isArray(data) ? data.filter(item => 
@@ -71,7 +70,6 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
           typeof item.cena === 'number'
         ) : [];
         
-        console.log("Filtered valid data:", validData);
         setMenuItems(validData);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An unknown error occurred');

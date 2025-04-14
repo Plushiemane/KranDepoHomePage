@@ -12,7 +12,7 @@ const AlkoholePage: React.FC = () => {
 
   return (
     <Layout title="Alkohole">
-      <section className="w-[80%] min-h-fit mx-auto mb-8 py-6 px-4
+      <section className="w-[100%] min-h-fit mx-auto mb-8 py-6 px-4
                          bg-[#dca471] bg-[url('/assets/img/Freebie-VintagePaperTextures-Preview-05.webp')] 
                          rounded-[63px] border-[10px] border-[#995e43] border-t-[10px] border-t-[#995f45]">
         <div className="mx-auto my-[2%] text-center">

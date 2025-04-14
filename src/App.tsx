@@ -25,7 +25,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/about" element={<AboutPage />} />
-        
+        <Route path="/Menu.html" element={<MenuPage />} />
         {/* Food category pages */}
         <Route path="/potrawy/dladzieci" element={<DlaDzieciPage />} />
         <Route path="/potrawy/napoje" element={<NapojePage />} />

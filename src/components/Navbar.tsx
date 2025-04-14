@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-svw bg-[#222222] py-2 mb-6 mt-0 z-100 overflow-hidden mx-0 max-w-[100%] ">
+    <nav className="fixed top-0 left-0 w-svw bg-[#222222] py-2 mb-6 mt-0 z-100 overflow-hidden mx-0 max-w-[100%]  ">
       <div className="container mx-auto px-4">
         {/* Desktop Navigation */}
         <div className="hidden md:flex justify-center items-center">

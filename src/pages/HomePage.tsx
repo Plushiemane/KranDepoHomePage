@@ -102,9 +102,10 @@ const HomePage: React.FC = () => {
               <OpeningHoursTable />
             </div>
             <div className="col-md-6 d-md-flex justify-content-center align-content-center justify-content-md-center align-items-md-center">
-              <div id="fb-root"></div>
+            <div id="fb-root"></div>
+            <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v22.0"></script>
               <div 
-                className="fb-page" 
+                className="fb-page mt-1" 
                 data-href="https://www.facebook.com/profile.php?id=61566859973402" 
                 data-tabs="timeline" 
                 data-width="400" 
@@ -123,7 +124,7 @@ const HomePage: React.FC = () => {
       </div>
       
       {/* Google Maps */}
-      <div className="text-center w-[60%] h-auto mx-auto justify-center min-w-[200px] max-w-[1339px]">
+      <div className="text-center w-[60%] h-auto mx-auto justify-center min-w-[200px] max-w-[1339px] mt-5">
         <iframe 
           width="100%" 
           height="500" 
